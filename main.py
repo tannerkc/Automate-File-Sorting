@@ -22,7 +22,7 @@ class FileHandler(FileSystemEventHandler):
             devType = ["py", "json", "css", "html", "htm", "js"]
 
             # grab each files original path 
-            src = trackedFolder + "/" + file
+            src = os.path.join(trackedFolder, file)
 
             # get the files extension 
             extension = file.split(".")[-1].lower()
@@ -31,124 +31,124 @@ class FileHandler(FileSystemEventHandler):
             # determine where each file type will go, create directory if not already existing 
 
             if extension in imgType:
-                newDestination = destinationFolder + "/" + "IMG"
+                newDestination = os.path.join(destinationFolder, "IMG")
                 if not os.path.exists(newDestination):
                     os.mkdir(newDestination)
-                newDestination = newDestination + "/" + file
+                newDestination = os.path.join(newDestination, file)
 
             elif extension in videoType:
-                newDestination = destinationFolder + "/" + "Video"
+                newDestination = os.path.join(destinationFolder, "Video")
                 if not os.path.exists(newDestination):
                     os.mkdir(newDestination)
-                newDestination = newDestination + "/" + file
+                newDestination = os.path.join(newDestination, file)
 
             elif extension in archiveType:
-                newDestination = destinationFolder + "/" + "Archives"
+                newDestination = os.path.join(destinationFolder, "Archives")
                 if not os.path.exists(newDestination):
                     os.mkdir(newDestination)
-                newDestination = newDestination + "/" + file
+                newDestination = os.path.join(newDestination, file)
 
             elif extension in softwareType:
-                newDestination = destinationFolder + "/" + "Installers"
+                newDestination = os.path.join(destinationFolder, "Installers")
                 if not os.path.exists(newDestination):
                     os.mkdir(newDestination)
-                newDestination = newDestination + "/" + file
+                newDestination = os.path.join(newDestination, file)
 
             elif extension in appType:
-                newDestination = destinationFolder + "/" + "Mobile Apps"
+                newDestination = os.path.join(destinationFolder, "Mobile Apps")
                 if not os.path.exists(newDestination):
                     os.mkdir(newDestination)
                 # determine the type of app for further organization 
                 if extension == "apk":
-                    newDestination = newDestination + "/" + "Android"
+                    newDestination = os.path.join(newDestination, "Android")
                     if not os.path.exists(newDestination):
                         os.mkdir(newDestination)
                 elif extension == "ipa":
-                    newDestination = newDestination + "/" + "iOS"
+                    newDestination = os.path.join(newDestination, "iOS")
                     if not os.path.exists(newDestination):
                         os.mkdir(newDestination)
                 else:
-                    newDestination == newDestination + "/" + "Other"
+                    newDestination = os.path.join(newDestination, "Other")
                     if not os.path.exists(newDestination):
                         os.mkdir(newDestination)
-                newDestination = newDestination + "/" + file
+                newDestination = os.path.join(newDestination, file)
 
             elif extension in devType:
-                newDestination = destinationFolder + "/" + "Dev Files"
+                newDestination = os.path.join(destinationFolder, "Dev Files")
                 if not os.path.exists(newDestination):
                     os.mkdir(newDestination)
                 # determine the type of app for further organization 
                 if extension == "py":
-                    newDestination = newDestination + "/" + "Python"
+                    newDestination = os.path.join(newDestination, "Python")
                     if not os.path.exists(newDestination):
                         os.mkdir(newDestination)
                 if extension == "json":
-                    newDestination = newDestination + "/" + "JSON"
+                    newDestination = os.path.join(newDestination, "JSON")
                     if not os.path.exists(newDestination):
                         os.mkdir(newDestination)
                 elif extension == "html" or extension == "htm" or extension == "css" or extension == "js":
-                    newDestination = newDestination + "/" + "Web"
+                    newDestination = os.path.join(newDestination, "Web")
                     if not os.path.exists(newDestination):
                         os.mkdir(newDestination)
                     if extension == "html" or extension == "htm":
-                        newDestination = newDestination + "/" + "html"
+                        newDestination = os.path.join(newDestination, "html")
                         if not os.path.exists(newDestination):
                             os.mkdir(newDestination)
                     elif extension == "js":
-                        newDestination = newDestination + "/" + "js"
+                        newDestination = os.path.join(newDestination, "js")
                         if not os.path.exists(newDestination):
                             os.mkdir(newDestination)
                     elif extension == "css":
-                        newDestination = newDestination + "/" + "css"
+                        newDestination = os.path,join(newDestination, "css")
                         if not os.path.exists(newDestination):
                             os.mkdir(newDestination)
-                newDestination = newDestination + "/" + file
+                newDestination = os.path.join(newDestination, file)
 
             elif extension in textType or extension in spreadsheetType or extension in presentationType:
-                newDestination = destinationFolder + "/" + "Office"
+                newDestination = os.path.join(destinationFolder, "Office")
                 if not os.path.exists(newDestination):
                     os.mkdir(newDestination)
                 # determine the type of office file for further organization 
                 if extension in textType:
-                    newDestination = newDestination + "/" + "Text Docs"
+                    newDestination = os.path.join(newDestination, "Text Docs")
                     if not os.path.exists(newDestination):
                         os.mkdir(newDestination)
                 elif extension in spreadsheetType:
-                    newDestination = newDestination + "/" + "Spreadsheets"
+                    newDestination = os.path.join(newDestination, "Spreadsheets")
                     if not os.path.exists(newDestination):
                         os.mkdir(newDestination)
                 elif extension in presentationType:
-                    newDestination = newDestination + "/" + "Presentations"
+                    newDestination = os.path.join(newDestination, "Presentations")
                     if not os.path.exists(newDestination):
                         os.mkdir(newDestination)
-                newDestination = newDestination + "/" + file
+                newDestination = os.path.join(newDestination, file)
 
             elif extension == "pdf":
-                newDestination = destinationFolder + "/" + "PDF"
+                newDestination = os.path.join(destinationFolder, "PDF")
                 if not os.path.exists(newDestination):
                     os.mkdir(newDestination)
-                newDestination = newDestination + "/" + file
+                newDestination = os.path.join(newDestination, file)
 
             elif extension == "whl":
-                newDestination = destinationFolder + "/" + "Python Packages"
+                newDestination = os.path.join(destinationFolder, "Python Packages")
                 if not os.path.exists(newDestination):
                     os.mkdir(newDestination)
-                newDestination = newDestination + "/" + file
+                newDestination = os.path.join(newDestination, file)
             
             elif extension == "torrent":
-                newDestination = destinationFolder + "/" + "Torrent Files"
+                newDestination = os.path.join(destinationFolder, "Torrent Files")
                 if not os.path.exists(newDestination):
                     os.mkdir(newDestination)
-                    
+
                 #This following line is because I download a lot of courses from freecoursesite.com and like to have those files on their own
                 if file.split(".")[0] == "FreeCourseSite":
                     newDestination = "C:/Users/Default User.DESKTOP-HLLJF0P/Documents/Courses"
                     if not os.path.exists(newDestination):
                         os.mkdir(newDestination)
-                newDestination = newDestination + "/" + file
+                newDestination = os.path.join(newDestination, file)
 
             else:
-                newDestination = destinationFolder + "/" + file
+                newDestination = os.path.join(destinationFolder, file)
 
             # check if file exists in sorted destination and add (copy) to end of file name
             if os.path.exists(newDestination):
@@ -166,18 +166,21 @@ class FileHandler(FileSystemEventHandler):
             else:
                 os.rename(src, newDestination) #rename original source to determined destinations
 
+
+#set the observer to run only if this file is run directly, this is because I import this script into my personal virtual assistant to sort any folder I tell it 
+if __name__ == "__main__":
 # i keep the sorting folder separate rather than directly sorting the downloads folder so that longer downloads aren't moved before they're finished
-trackedFolder = "C:/Users/Default User.DESKTOP-HLLJF0P/Downloads/sortingFolder" 
-destinationFolder = "C:/Users/Default User.DESKTOP-HLLJF0P/Downloads" 
+    trackedFolder = "C:/Users/Default User.DESKTOP-HLLJF0P/Downloads/sortingFolder" 
+    destinationFolder = "C:/Users/Default User.DESKTOP-HLLJF0P/Downloads" 
 
-eventHandler = FileHandler()
-observer = Observer()
-observer.schedule(eventHandler, trackedFolder, recursive=True)
-observer.start()
+    eventHandler = FileHandler()
+    observer = Observer()
+    observer.schedule(eventHandler, trackedFolder, recursive=True)
+    observer.start()
 
-try:
-    while True:
-        time.sleep(10)
-except KeyboardInterrupt:
-    observer.stop()
-observer.join()
+    try:
+        while True:
+            time.sleep(10)
+    except KeyboardInterrupt:
+        observer.stop()
+    observer.join()
