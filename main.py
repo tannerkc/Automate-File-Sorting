@@ -1,6 +1,8 @@
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
+from trayIcon import trayIcon
+
 import os
 import json
 import time
@@ -169,9 +171,13 @@ class FileHandler(FileSystemEventHandler):
 
 #set the observer to run only if this file is run directly, this is because I import this script into my personal virtual assistant to sort any folder I tell it 
 if __name__ == "__main__":
+    trayIcon.main()
 # i keep the sorting folder separate rather than directly sorting the downloads folder so that longer downloads aren't moved before they're finished
-    trackedFolder = "C:/Users/Default User.DESKTOP-HLLJF0P/Downloads/sortingFolder" 
-    destinationFolder = "C:/Users/Default User.DESKTOP-HLLJF0P/Downloads" 
+    downloads = os.listdir(os.path.join(home, "Downloads"))
+    # trackedFolder = "C:/Users/Default User.DESKTOP-HLLJF0P/Downloads/sortingFolder"
+    trackedFolder = os.path.join(downloads, "sortingFolder")
+    # destinationFolder = "C:/Users/Default User.DESKTOP-HLLJF0P/Downloads"
+    destinationFolder = downloads
 
     eventHandler = FileHandler()
     observer = Observer()
